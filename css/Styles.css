@@ -130,3 +130,30 @@ footer{
 .imgTraining:hover{
     opacity: 0.5;
 }
+
+
+
+
+
+/*formularios*/
+#btnEnviar {
+    background-color: rgb(114, 11, 11);
+    border: 0px;
+    margin: 10px;
+    margin-left: 100px;
+    padding: 10px;
+    color: #eee;
+}
+
+#btnEnviar:hover {
+    opacity: 0.5;
+}
+#btnResetear:hover {
+    opacity: 0.5;
+}
+#btnResetear {
+    background-color: rgb(88, 43, 43);
+    border: 0px;
+    padding: 10px;
+    color: #eee;
+}
