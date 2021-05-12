@@ -7,6 +7,81 @@
         <title>Registro</title>
         <link href="css/bootstrap.min.css" type="text/css" rel="Stylesheet">
         <link href="css/Styles.css" type="text/css" rel="Stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
+        <style>
+            label {
+                padding: 5px;
+            }
+
+            #tituloInicioSesion {
+                text-align: center;
+                padding-bottom: 10px;
+                color: rgb(15, 96, 107);
+                text-shadow: 1px 1px 1px rgb(6, 44, 114);
+            }
+
+            #tituloRegistrar {
+                text-align: center;
+                padding-bottom: 10px;
+                color: rgb(15, 96, 107);
+                text-shadow: 1px 1px 1px rgb(6, 44, 114);
+            }
+            label {
+                clear: both;
+                float: left;
+                width: 180px;
+            }
+            .error-control {
+                border: 1px solid red;
+            }
+            label.error {
+                color: red;
+                width: 300px;
+                font-size: 0.8em;
+                margin-top: -5px;
+                margin-bottom: 10px;
+            }
+        </style>
+        <script>
+            $(function() {
+
+            $("#formRegistro").validate( {
+                rules: {
+                    lnombre: "required",
+                    lapellido: "required",
+                    lcorreo: "required",
+                    lpassword: "required",
+                    lpassword2: {
+                        lpassword2: "required",
+                        equalTo: "#lpassword"
+                    },
+                    lanioNacimiento: "required",
+                    genero: "required",
+                },
+                messages: {
+                    lnombre: "Ingresa tu nombre",
+                    lapellido: "Ingresa tu apellido",
+                    lcorreo: {
+                        required: "Ingresa tu correo electronico",
+                        lcorreo: "Ingrese formato correcto",
+                    },
+                    lpassword: {
+                        required: "Ingresa una contrasenia",
+                        minLength: "Ingresa minimo 6 caracteres",
+                    },
+                    lpassword2: {
+                        required: "Ingresa una contrasenia",
+                        equalTo: "Las contrasenias deben coincidir",
+                    },
+                    lanioNacimiento: "Ingrese anio de nacimiento",
+                    genero: "Debe seleccionar un genero",
+                }
+            });
+        
+        });
+        </script>
     </head>
     <body>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
@@ -42,9 +117,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm" >
+                    <div id = "tituloInicioSesion">
+                        <h1>Iniciar sesion</h1>
+                    </div>
                     <form role="form" action="#" method="POST" style="background-color: rgb(109, 105, 105); border-radius: 5px; border: solid 1px #eee">
                         <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
-                            <label for="lcorre">Correo </label>
+                            <label for="lcorre">Correo electrónico</label>
                             <input type="email" class="form-control" id="lcorreo" name="lcorreo" placeholder="Ingrese correo electrónico..." required />
                         </div>
                         <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
@@ -57,7 +135,10 @@
                     </form>
                 </div>
                 <div class="col-sm">
-                    <form role="form" action="#" method="POST" style="background-color: rgb(109, 105, 105); border-radius: 5px; border: solid 1px #eee">
+                    <div id = "tituloRegistrar">
+                        <h1>Registrarse</h1>
+                    </div>
+                    <form id = "formRegistro" role="form" action="confirmacion.html" method="POST" style="background-color: rgb(109, 105, 105); border-radius: 5px; border: solid 1px #eee">
                         <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
                             <label for="lnombre">Nombres </label>
                             <input type="text" class="form-control" id="lnombre" name="lnombre" placeholder="Ingrese nombres..." required autofocus />
@@ -67,12 +148,16 @@
                             <input type="text" class="form-control" id="lapellido" name="lapellido" placeholder="Ingrese apellidos..." required />
                         </div>
                         <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
+                            <label for="lcorre">Correo </label>
+                            <input type="email" class="form-control" id="lcorreo" name="lcorreo" placeholder="Ingrese correo electrónico..." required />
+                        </div>
+                        <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
                             <label for="lpassword">Contraseña </label>
                             <input type="password" class="form-control" id="lpassword" name="lpassword" placeholder="Ingrese contraseña..." required minlength="6" maxlength="9" />
                         </div>
                         <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
-                            <label for="lcorre">Correo </label>
-                            <input type="email" class="form-control" id="lcorreo" name="lcorreo" placeholder="Ingrese correo electrónico..." required />
+                            <label for="lpassword2">Reingresa contraseña</label>
+                            <input type="password" class="form-control" id="lpassword2" name="lpassword2" placeholder="Ingrese contraseña..." required minlength="6" maxlength="9" />
                         </div>
                         <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
                             <label for="lanioNacimiento">Fecha de nacimiento </label>
@@ -80,7 +165,7 @@
                         </div>
                         <label for="genero" style="margin-left: 100px; margin-right: 100px;">Genero: </label><br />
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="femenino" name="genero" value="Femenino" style="margin-left: 100px;"/>
+                            <input class="form-check-input" type="radio" id="femenino" name="genero" value="Femenino"/>
                             <label for="genero" class="form-check-label">Femenino</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -94,11 +179,6 @@
                     </form>
                 </div>
             </div>
-
-             
-        
-
-
         </div>
     </body>
 </html>
