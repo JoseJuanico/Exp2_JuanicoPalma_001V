@@ -9,7 +9,6 @@
         <link href="css/Styles.css" type="text/css" rel="Stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
-
         <style>
             label {
                 padding: 5px;
@@ -37,49 +36,70 @@
                 border: 1px solid red;
             }
             label.error {
-                color: red;
+                color: rgb(131, 1, 1);
                 width: 300px;
                 font-size: 0.8em;
                 margin-top: -5px;
-                margin-bottom: 10px;
+                margin-bottom: 3px;
             }
         </style>
         <script>
+            $(document).ready(function() {
+                $.extend(jQuery.validator.messages, {
+                    required: "This field is required.",
+                    email: "Ingresa un correo con formato user@data .",
+                    minlength: $.validator.format("Ingresa 6 caracteres como minimo."),
+                });
+            });
             $(function() {
-
             $("#formRegistro").validate( {
                 rules: {
                     lnombre: "required",
                     lapellido: "required",
                     lcorreo: "required",
-                    lpassword: "required",
+                    lpassword1: "required",
                     lpassword2: {
-                        lpassword2: "required",
-                        equalTo: "#lpassword"
+                        required: true,
+                        equalTo: "#lpassword1"
                     },
                     lanioNacimiento: "required",
                     genero: "required",
                 },
                 messages: {
-                    lnombre: "Ingresa tu nombre",
-                    lapellido: "Ingresa tu apellido",
+                    lnombre: "Ingresa tu nombre.",
+                    lapellido: "Ingresa tu apellido.",
                     lcorreo: {
-                        required: "Ingresa tu correo electronico",
-                        lcorreo: "Ingrese formato correcto",
+                        required: "Ingresa tu correo electronico.",
                     },
-                    lpassword: {
-                        required: "Ingresa una contrasenia",
-                        minLength: "Ingresa minimo 6 caracteres",
+                    lpassword1: {
+                        required: "Ingresa una contrasenia.",
                     },
                     lpassword2: {
-                        required: "Ingresa una contrasenia",
-                        equalTo: "Las contrasenias deben coincidir",
+                        required: "Ingresa una contrasenia.",
+                        equalTo: "Las contrasenias deben coincidir.",
                     },
-                    lanioNacimiento: "Ingrese anio de nacimiento",
-                    genero: "Debe seleccionar un genero",
+                    lanioNacimiento: "Ingrese anio de nacimiento.",
+                    genero: "Debe seleccionar un genero.",
                 }
             });
         
+        });
+        $(function(){
+            $("#formSesion").validate( {
+                rules: {
+                lcorreo: "required",
+                lpassword: "required"
+                },
+                messages: {
+                    lcorreo: {
+                        required: "Ingresa tu correo electronico.",
+                        lcorreo: "Ingrese formato correcto.",
+                    },
+                    lpassword: {
+                        required: "Ingresa una contrasenia.",
+                    }
+                }   
+            });
         });
         </script>
     </head>
@@ -109,6 +129,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="registro.html">Registro</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estadoFisico.html">Estado Fisico</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -120,14 +143,14 @@
                     <div id = "tituloInicioSesion">
                         <h1>Iniciar sesion</h1>
                     </div>
-                    <form role="form" action="#" method="POST" style="background-color: rgb(109, 105, 105); border-radius: 5px; border: solid 1px #eee">
+                    <form role="form" id = "formSesion" action="#" method="POST" style="background-color: rgb(109, 105, 105); border-radius: 5px; border: solid 1px #eee">
                         <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
                             <label for="lcorre">Correo electrónico</label>
                             <input type="email" class="form-control" id="lcorreo" name="lcorreo" placeholder="Ingrese correo electrónico..." required />
                         </div>
                         <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
                             <label for="lpassword">Contraseña </label>
-                            <input type="password" class="form-control" id="lpassword" name="lpassword" placeholder="Ingrese contraseña..." required minlength="6" maxlength="9" />
+                            <input type="password" class="form-control" id="lpassword" name="lpassword" placeholder="Ingrese contraseña..." required maxlength="9" />
                         </div>
                         <div class="btnFormulario1" >
                             <input type="submit" id="btnEnviar" name="btnEnviar" onclick="" value="Iniciar Sesión" />
@@ -152,8 +175,8 @@
                             <input type="email" class="form-control" id="lcorreo" name="lcorreo" placeholder="Ingrese correo electrónico..." required />
                         </div>
                         <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
-                            <label for="lpassword">Contraseña </label>
-                            <input type="password" class="form-control" id="lpassword" name="lpassword" placeholder="Ingrese contraseña..." required minlength="6" maxlength="9" />
+                            <label for="lpassword1">Contraseña </label>
+                            <input type="password" class="form-control" id="lpassword1" name="lpassword1" placeholder="Ingrese contraseña..." required minlength="6" maxlength="9" />
                         </div>
                         <div class="form-group" style="margin-left: 100px; margin-right: 100px;">
                             <label for="lpassword2">Reingresa contraseña</label>
