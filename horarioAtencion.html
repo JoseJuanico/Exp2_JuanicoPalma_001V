@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <title>Horarios</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Confirmación</title>
+        <title>Estado Fisico</title>
         <link href="css/bootstrap.min.css" type="text/css" rel="Stylesheet">
         <link href="css/Styles.css" type="text/css" rel="Stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                $("#enviar").click(function(){
+                    $.get("https://apis.digital.gob.cl/fl/feriados/2021",
+                        function(data){
+                            
+                            $.each(data,function(i,item){
+                                $("#fechas").append("<tr><td>"+item.nombre+"</td><td>"+item.fecha +
+                                "</td><td>"+ item.tipo+ "</td><td>"+item.irrenunnciable+"</td></tr>");
+                                
+
+                            });
+
+                        });
+                });
+            })
+          
+     </script>
+
     </head>
     <body>
+        <!--Barra de navecación-->
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
                 <span class="navbar-toggler-icon"></span>
@@ -43,27 +67,47 @@
                 </ul>
             </div>
         </nav>
-        <div class="container" style="background-color: rgb(190, 190, 190); margin-top: 100px;">
-            <div class="row">
-                <div class="col-sm"style="background-color: black;">
+        <hr style="height:70px; border-width:1; color:gray; background-color: black; margin: auto;">
+        <hr style="height:70px; border-width:1; color:gray; background-color: black; margin: auto;">
+        <div class = "container">
+            <div class = "row">
+                <div class = "col-sm" style = "color: white;">
+                    <h1 onmouseover = "style.color ='blue'" onmouseout = "style.color ='white'">Horarios</h1></br>
+                    <p onmouseover = "style.color ='green'" onmouseout = "style.color ='white'">Todos nuestros gimnasios a lo largo de todo Chile tienen un horario de apertura y cierre sincronico, de 06:00 AM a 11:30 PM, ademas, para mantener el mejor servicio a todos
+                        nuestros clientes, abrimos de Lunes a Domingo, exceptuando los feriados.
+                    </p>
                 </div>
-                <div class="col-sm" style="border-style:outset;">
-                    <div class="gracias">
-                    <p>Se ha registrado con éxito!<br />
-                    Presiona el boton "Aceptar" para volver al inicio </p>
-                    </div>
-                    <div class="btnAceptar">
-                        <a href="index.html" class="linkConfirmacion"><input type="button" id="btnAcepta" name="btnAcepta" value="Aceptar"></a>
-                    </div>
-                </div>
-                <div class="col-sm" style="background-color: black;">
+                <div class = "col-sm">
+                    <img src = "img/horarios.jpg" style = "width: 100%;border-radius: 4px;">
                 </div>
             </div>
+
+            <hr style="height:70px; border-width:1; color:gray; background-color: black; margin: auto;">
+
+            <div id = "tituloHorario" style = "color: white">
+                <h1 onmouseover = "style.color ='blue';" onmouseout = "style.color ='white'">Fechas de cierre de gimnasios</h1></br>
+                <p onmouseover = "style.color ='green'" onmouseout = "style.color ='white'">Para mantener informados a nuestros clientes, dejamos a su disposicion los dias feriados del anio, por ende, los dias en que nuestras instalaciones se mantendran cerradas.</p>
+            </div>
         </div>
-        <hr style="height:100px; border-width:1; color:gray; background-color: black; margin: auto;">
-        <hr style="height:100px; border-width:1; color:gray; background-color: black; margin: auto;">
-        <hr style="height:100px; border-width:1; color:gray; background-color: black; margin: auto;">
-        <hr style="height:100px; border-width:1; color:gray; background-color: black; margin: auto;">
+        </br>
+        </br>
+        <button type="button" id="enviar">Mostrar feriados 2021</button>
+        </br>
+        </br>
+        <table  class="table" id="fechas">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Irrenunciable</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        </br>
+        </br>
         <footer class="piePagina bg-dark">
             <div class="container">
                 <div class="row">
@@ -81,10 +125,5 @@
                 </div>
             </div>
         </footer>
-
-        <!--Js, SQuery, Bootstrap, etc-->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
     </body>
 </html>

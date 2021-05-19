@@ -10,26 +10,37 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
         <script src = "js/funcionesJs.js"></script>
-       <!--  <script>
-           
-           /*  function calcularImc() {
-                var imc,peso, estatura = "";
-                peso = document.getElementById("#lpeso").value; 
-                estatura = document.getElementById("#lestatura").value;
-                imc = (parseInt(peso) / (parseInt(estatura) * parseInt(estatura)));
-                console.log(imc);
-                return imc;
-            }; */
-           /*  function calculoEstadoFisico(peso, estatura, sexo, edad, estado) {
-                var peso, estatura, sexo, edad, estado = "";
-                peso = parseInt(document.getElementById("#lpeso").value);
-                estatura = parseInt(document.getElementById("#lestatura").value);
-                edad = parseInt(document.getElementById("#ledad").value);
-                sexo = document.getElementById("#lgenero3").value;
-                estado = calcularImc(peso, estatura);
-                console.log(estado);
-            }; */
-        </script> -->
+        <script>
+            $(document).ready(function() {
+
+                $("#btnAgua").click(function () {
+                    var peso, edad, genero, calculo = "";
+                    peso = parseInt($("#pesoRecomendacion").val());
+                    edad = parseInt($("#edadRecomendacion").val());
+                    genero = $("#generoRecomendar").val();
+                    if (isNaN(peso) || isNaN(edad) || genero == "--") {
+                        $("#edadAgua").val("--");
+                        $("#pesoAgua").val("--");
+                        $("#generoAgua").val("--");
+                        $("#aguaAlDia").val("--");        
+                    } else {
+                        if (edad <= 10) {
+                        calculo = 1500;
+                        } else if (edad > 10 && edad <= 18) {
+                            calculo = 2000;
+                        } else {
+                            calculo = peso * 35;
+                        }
+                        $("#generoAgua").val(genero);
+                        $("#edadAgua").val(edad + " años");
+                        $("#aguaAlDia").val(calculo + "ml");
+                        $("#pesoAgua").val(peso + "kg");
+                        }
+                    
+                });
+            });
+
+        </script>
     </head>
     <body>
         <!--Barra de navecación-->
@@ -61,31 +72,35 @@
                     <li class="nav-item">
                         <a class="nav-link" href="estadoFisico.html">Estado Fisico</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="horarioAtencion.html">Horarios de apertura</a>
+                     </li>
                 </ul>
             </div>
         </nav>
         <hr style="height:70px; border-width:1; color:gray; background-color: black; margin: auto;">
         <hr style="height:70px; border-width:1; color:gray; background-color: black; margin: auto;">
-        <div class = "container">
+            <div class = "container">
             <div class = "row">
-                <div class = "col-sm" style = "background-color: rgb(190, 190, 190);">
+                <div class = "col-sm" style = "background-color: rgb(190, 190, 190);border-radius: 10px;">
+                    <h2 style = "text-align: center;"onmouseover = "style.color = 'purple'" onmouseout="style.color= 'black'">Calcula tu IMC</h2></br>
                     <form id = "formCalcular" action = "#" method = "POST">
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><label for = "lpeso">Peso : </label></td>
+                                    <td>Peso : </td>
                                     <td><input style = "width: 100px;"type = "number" id = "lpeso" name = "lpeso" value = "" placeholder = "kg..." required autofocus></td>
                                 </tr>
                                 <tr>
-                                    <td><label for = lestatura >Estatura : </label></td>
+                                    <td>Estatura: </td>
                                     <td><input style = "width: 100px;" type = "number" id = "lestatura" name = "lestatura" value = "" placeholder = "Metros..." required></td>
                                 </tr>
                                 <tr>
-                                    <td><label for = ledad>Edad: </label></td>
+                                    <td>Edad: </td>
                                     <td><input style = "width: 100px;" type = "number" id = "ledad" name = "ledad" value = "" required></td>
                                 </tr>
                                 <tr>
-                                    <td><label for = "lgenero2">Sexo: </label></td>
+                                    <td>Sexo: </td>
                                     <td><div class = "form-check form-check-inline">
                                             <input type = "radio" class = "form-check-input" id = "lgenero3" name = "lgenero3" value = "mujer">
                                             <label for = "lgenero3" class = "form-check-label">Mujer</label>
@@ -139,15 +154,64 @@
                 <div class = "col-sm">
                 </div>
                 <div class = "col-sm" >
-                    <div id = "imgPlanEstado">
-                        <a href = "plan.html"><img src = "img/registro2.jpg" value = "imagen planes" style = "width: 100%;">contrata</a>
+                    <div id = "linkPlan">
+                        <a href = "plan.html"><h1 id = "linkPlan1">Revisa planes a contratar aca...</h1></a>
                     </div>
                 </div>
             </div>
         </div>
-        <hr style="height:70px; border-width:1; color:gray; background-color: black; margin: auto;">
-        <hr style="height:70px; border-width:1; color:gray; background-color: black; margin: auto;">
         <hr style="height:100px; border-width:1; color:gray; background-color: black; margin: auto;">
+        <div class = "container" style = "background-color: rgb(190, 190, 190);width: 450px;border-radius: 10px;">
+            <div id = "recomendacion">
+                <h2 onmouseover = "style.color = 'purple'" onmouseout="style.color= 'black'"style= "text-align: center; "id = "recomendaciones">Calcular cantidad de agua recomendada al dia</h2></br>
+                <h4>Ingrese los siguientes datos: </h4>
+            </div>
+            <form id = "formRecomendar" method = "POST" action = "#">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Seleccione genero: </td>
+                            <td><select id = "generoRecomendar" autofocus>
+                                <option value = "--">--</option>
+                                <option value = "mujer">Mujer</option>
+                                <option value = "hombre">Hombre</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td>Ingrese edad: </td>
+                            <td><input type = "number" id = "edadRecomendacion" class = "edadRecomendacion"></td>
+                        </tr>
+                        <tr>
+                            <td>Ingrese peso: </td>
+                            <td><input type = "number" id = "pesoRecomendacion" class = "pesoRecomendacion" placeholder = "kg..." required></td>
+                        </tr>
+                        <tr>
+                            <td><button type = "button" id = "btnAgua">Calcular</button></td>
+                        </tr>
+                        <tr>
+                            <td>Sexo: </td>
+                            <td><input type = "text" id = "generoAgua" name = "generoAgua"></td>
+                        </tr>
+                        <tr>
+                            <td>Edad: </td>
+                            <td><input type = "text" id = "edadAgua" name = "edadAgua"></td>
+                        </tr>
+                        <tr>
+                            <td>Peso: </td>
+                            <td><input type = "text" id = "pesoAgua" name = "pesoAgua"></td>
+                        </tr>
+                        <tr>
+                            <td>La cantidad de agua recomendada es: </td>
+                            <td><input type = "text" id = "aguaAlDia" name = "aguaAlDia"></td>
+                        </tr>
+                        <tr>
+                            <td><button type = "reset" id = "btnAguaLimpiar">Limpiar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </form>
+        </div>
 
         <footer class="piePagina bg-dark">
             <div class="container">
