@@ -140,9 +140,10 @@ footer{
     background-color: rgb(114, 11, 11);
     border: 0px;
     margin: 10px;
-    margin-left: 100px;
+    margin-left: 150;
     padding: 10px;
     color: #eee;
+    margin-top: 40px;
 }
 
 #btnEnviar:hover {
@@ -151,10 +152,10 @@ footer{
 
 #btnEnviar:active {
     background-color: blue;
-    text-decoration: underline;
 }
 #btnResetear:hover {
     opacity: 0.5;
+
 }
 #btnResetear {
     background-color: rgb(114, 11, 11);
@@ -248,4 +249,18 @@ footer{
 #enviar:active {
     text-decoration: underline;
     color: white;
+}
+
+.trFeriado:nth-child(even) {
+    background-color: cadetblue;
+}
+.tdFeriado {
+    border-style: solid ;
+    text-align: center;
+
+}
+
+.thFeriado {
+    border-style: solid;
+    background-color:rgb(207, 129, 11);
 }

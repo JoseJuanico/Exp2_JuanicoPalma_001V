@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Estado Fisico</title>
+        <title>Estado Físico</title>
         <link href="css/bootstrap.min.css" type="text/css" rel="Stylesheet">
         <link href="css/Styles.css" type="text/css" rel="Stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -70,7 +70,7 @@
                         <a class="nav-link" href="registro.html">Registro</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="estadoFisico.html">Estado Fisico</a>
+                        <a class="nav-link" href="estadoFisico.html">Estado Físico</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="horarioAtencion.html">Horarios de apertura</a>
@@ -83,7 +83,7 @@
             <div class = "container">
             <div class = "row">
                 <div class = "col-sm" style = "background-color: rgb(190, 190, 190);border-radius: 10px;">
-                    <h2 style = "text-align: center;"onmouseover = "style.color = 'purple'" onmouseout="style.color= 'black'">Calcula tu IMC</h2></br>
+                    <h2 style = "text-align: center;"onmouseover = "style.color = 'purple'" onmouseout="style.color= 'black'">Calcúla tu IMC</h2></br>
                     <form id = "formCalcular" action = "#" method = "POST">
                         <table>
                             <tbody>
@@ -112,7 +112,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label for = "lactividad">Actividad fisica: </label></td>
+                                    <td><label for = "lactividad">Actividad física: </label></td>
                                     <td><select id = "selector" required>
                                         <option value = "sedentaria">Sedentaria</option>
                                         <option value = "ligera">Ligera</option>
@@ -144,8 +144,8 @@
 
                                 </tr>
                                 <tr>
-                                    <td><input type = "submit" value = "Calcula tu estado fisico" id = "enviarEstadoFisico" onclick="calculoEstadoFisico()"></td>
-                                    <td><input type = "reset" value = "Limpiar datos" onclick="alert('Se han borrado los parametros')" id = "limpiarDatos1"></td>
+                                    <td><input type = "submit" value = "Calcula tu estado físico" id = "enviarEstadoFisico" onclick="calculoEstadoFisico()"></td>
+                                    <td><input type = "reset" value = "Limpiar datos" onclick="alert('Se han borrado los parámetros')" id = "limpiarDatos1"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -155,7 +155,7 @@
                 </div>
                 <div class = "col-sm" >
                     <div id = "linkPlan">
-                        <a href = "plan.html"><h1 id = "linkPlan1">Revisa planes a contratar aca...</h1></a>
+                        <a href = "plan.html"><h1 id = "linkPlan1">Revisa planes a contratar acá...</h1></a>
                     </div>
                 </div>
             </div>
@@ -163,14 +163,14 @@
         <hr style="height:100px; border-width:1; color:gray; background-color: black; margin: auto;">
         <div class = "container" style = "background-color: rgb(190, 190, 190);width: 450px;border-radius: 10px;">
             <div id = "recomendacion">
-                <h2 onmouseover = "style.color = 'purple'" onmouseout="style.color= 'black'"style= "text-align: center; "id = "recomendaciones">Calcular cantidad de agua recomendada al dia</h2></br>
+                <h2 onmouseover = "style.color = 'purple'" onmouseout="style.color= 'black'"style= "text-align: center; "id = "recomendaciones">Calcular cantidad de agua recomendada al día</h2></br>
                 <h4>Ingrese los siguientes datos: </h4>
             </div>
             <form id = "formRecomendar" method = "POST" action = "#">
                 <table>
                     <tbody>
                         <tr>
-                            <td>Seleccione genero: </td>
+                            <td>Seleccione género: </td>
                             <td><select id = "generoRecomendar" autofocus>
                                 <option value = "--">--</option>
                                 <option value = "mujer">Mujer</option>

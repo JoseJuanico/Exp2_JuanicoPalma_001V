@@ -5,7 +5,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Estado Fisico</title>
         <link href="css/bootstrap.min.css" type="text/css" rel="Stylesheet">
         <link href="css/Styles.css" type="text/css" rel="Stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,8 +17,8 @@
                         function(data){
                             
                             $.each(data,function(i,item){
-                                $("#fechas").append("<tr><td>"+item.nombre+"</td><td>"+item.fecha +
-                                "</td><td>"+ item.tipo+ "</td><td>"+item.irrenunnciable+"</td></tr>");
+                                $("#fechas").append("<tr class = 'trFeriado'><td class = 'tdFeriado'>"+item.nombre+"</td><td class = 'tdFeriado'>"+item.fecha +
+                                "</td><td class = 'tdFeriado'>"+ item.tipo+ "</td><td class = 'tdFeriado'>"+item.irrenunciable+"</td></tr>");
                                 
 
                             });
@@ -27,7 +26,6 @@
                         });
                 });
             })
-          
      </script>
 
     </head>
@@ -59,7 +57,7 @@
                         <a class="nav-link" href="registro.html">Registro</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="estadoFisico.html">Estado Fisico</a>
+                        <a class="nav-link" href="estadoFisico.html">Estado Fsico</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="horarioAtencion.html">Horarios de apertura</a>
@@ -86,26 +84,34 @@
 
             <div id = "tituloHorario" style = "color: white">
                 <h1 onmouseover = "style.color ='blue';" onmouseout = "style.color ='white'">Fechas de cierre de gimnasios</h1></br>
-                <p onmouseover = "style.color ='green'" onmouseout = "style.color ='white'">Para mantener informados a nuestros clientes, dejamos a su disposicion los dias feriados del anio, por ende, los dias en que nuestras instalaciones se mantendran cerradas.</p>
+                <p onmouseover = "style.color ='green'" onmouseout = "style.color ='white'">Para mantener informados a nuestros clientes, dejamos a su disposicion los dias feriados del año, por ende, los días en que nuestras instalaciones se mantendrán cerradas.</p>
+            </div>
+        </br>
+        </br>
+            <div class = "row" width = "1000px">
+                <div class = "col-m">
+                    <button type="button" id="enviar">Mostrar feriados 2021</button>
+                    </br>
+                    </br>
+                    <table  style = "background-color: rgb(134, 179, 164);border-style: solid ;" id="fechas">
+                        <thead>
+                            <tr>
+                                <th class = "thFeriado">Nombre</th>
+                                <th class = "thFeriado">Fecha</th>
+                                <th class = "thFeriado">Tipo</th>
+                                <th class = "thFeriado">Irrenunciable (0 = "No obligatorio" -- 1 = "Obligatorio"</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+               
             </div>
         </div>
         </br>
         </br>
-        <button type="button" id="enviar">Mostrar feriados 2021</button>
-        </br>
-        </br>
-        <table  class="table" id="fechas">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Irrenunciable</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+      
         </br>
         </br>
         <footer class="piePagina bg-dark">
